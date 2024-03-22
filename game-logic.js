@@ -61,3 +61,41 @@ console.log('computer: ' + computer);
 console.log('player: ' + player);
 
 console.log(playRound(computer,player));
+
+function playGame() {
+    let computerScore = 0;
+    let playerScore = 0;
+
+    for (let i = 0; i < 5; i++) {
+        let computerChoice = getComputerChoice();
+        let playerChoice = getPlayerChoice();
+
+        console.log("Round " + (i + 1) + ":");
+        console.log("Computer chose: " + computerChoice);
+        console.log("Player chose: " + playerChoice);
+
+        let result = playRound(computerChoice, playerChoice);
+
+        if (result === "The computer wins") {
+            computerScore++;
+        } else if (result === "You win!") {
+            playerScore++;
+        }
+
+        console.log(result);
+        console.log("Computer Score: " + computerScore);
+        console.log("Player Score: " + playerScore);
+        console.log("--------------------");
+    }
+
+    if (computerScore > playerScore) {
+        console.log("Computer wins the game!");
+    } else if (computerScore < playerScore) {
+        console.log("Player wins the game!");
+    } else {
+        console.log("It's a tie game!");
+    }
+}
+
+// Call the function to play the game
+playGame();
