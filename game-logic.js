@@ -1,16 +1,16 @@
 let choice = prompt("Please enter your choice here");
 let playerChoice = choice.toLowerCase();
 
-function convertPlayerChoice() {
+function getPlayerChoice() {
     switch (playerChoice) {
         case "rock" :
-            return 1;
+            return 'rock';
             break;
         case "paper" :
-            return 2;
+            return 'paper';
             break;
         case "scissors" :
-            return 3;
+            return 'scissors' ;
             break;
         default :
             return "Unknown"
@@ -39,16 +39,25 @@ function getComputerChoice() {
     return absoluteUnit;
 }
 
-function playRound (absoluteUnit, playerChoice) {
+function playRound (getComputerChoice, getPlayerChoice) {
 
-    switch (absoluteUnit) {
-        case absoluteUnit >= playerChoice :
-            return "The computer wins" ;
-            break;
-        default:
-            return "You win!"
+    if (getComputerChoice === getPlayerChoice) {
+        return "It's a tie!";
+    } else if (
+        (getComputerChoice === "rock" && getPlayerChoice === "scissors" ) ||
+        (getComputerChoice === "paper" && getPlayerChoice === "rock" ) ||
+        (getComputerChoice === "scissors" && getPlayerChoice === "paper" )
+    ) {
+        return "The computer wins";
+    } else {
+        return "You win!";
     }
-
 }
 
-console.log(getComputerChoice())
+let player = getPlayerChoice();
+let computer = getComputerChoice();
+
+console.log(computer);
+console.log(player);
+
+console.log(playRound(computer,player));
